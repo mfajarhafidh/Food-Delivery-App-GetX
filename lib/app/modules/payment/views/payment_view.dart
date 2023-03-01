@@ -6,13 +6,9 @@ import 'package:get/get.dart';
 import '../controllers/payment_controller.dart';
 import '../widgets/button_confirm_widget.dart';
 
-enum PaymentGroup { card, bankAccount }
-
-enum DeliveryGroup { doorDelivery, pickUp }
-
 class PaymentView extends GetView<PaymentController> {
-  PaymentGroup? _char = PaymentGroup.card;
-  DeliveryGroup? _group = DeliveryGroup.doorDelivery;
+  PaymentController paymentController = Get.put(PaymentController());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +27,7 @@ class PaymentView extends GetView<PaymentController> {
             },
           ),
           title: Stack(children: const [
-             Text(
+            Text(
               "Checkout",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -81,78 +77,76 @@ class PaymentView extends GetView<PaymentController> {
                 ),
                 child: Column(
                   children: [
-                    ListTile(
-                      title: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFF47B0A)),
-                            child: SvgPicture.asset(
-                                        'assets/icon/icon_card.svg',
-                                        height: 12,
-                                        width: 16,
-                                        fit: BoxFit.scaleDown),
+                    Obx(() => ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color(0xFFF47B0A)),
+                                child: SvgPicture.asset(
+                                    'assets/icon/icon_card.svg',
+                                    height: 12,
+                                    width: 16,
+                                    fit: BoxFit.scaleDown),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Card",
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400),
+                              )
+                            ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "Card",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                      leading: Radio<PaymentGroup>(
-                          value: PaymentGroup.card,
-                          groupValue: _char,
-                          activeColor:  const Color(0xFFFA4A0C),
-                          onChanged: (PaymentGroup? value) {
-                            // setState(() {
-                            //   _char = value;
-                            // });
-                          }),
-                    ),
+                          leading: Radio<PaymentGroup>(
+                              value: PaymentGroup.card,
+                              groupValue: paymentController.char.value,
+                              activeColor: const Color(0xFFFA4A0C),
+                              onChanged: (PaymentGroup? value) {
+                                paymentController
+                                    .onClickPayment(PaymentGroup.card);
+                              }),
+                        )),
                     const Divider(
                         color: Colors.black26, indent: 80, endIndent: 30),
-                    ListTile(
-                      title: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFEB4796)),
-                            child: SvgPicture.asset(
-                                        'assets/icon/icon_bank_account.svg',
-                                        height: 12,
-                                        width: 16,
-                                        fit: BoxFit.scaleDown),
+                    Obx(() => ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color(0xFFEB4796)),
+                                child: SvgPicture.asset(
+                                    'assets/icon/icon_bank_account.svg',
+                                    height: 12,
+                                    width: 16,
+                                    fit: BoxFit.scaleDown),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Bank Account",
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400),
+                              )
+                            ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "Bank Account",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                      leading: Radio<PaymentGroup>(
-                          value: PaymentGroup.bankAccount,
-                          groupValue: _char,
-                          activeColor:  const Color(0xFFFA4A0C),
-                          onChanged: (PaymentGroup? value) {
-                            // setState(() {
-                            //   _char = value;
-                            // });
-                          }),
-                    ),
+                          leading: Radio<PaymentGroup>(
+                              value: PaymentGroup.bankAccount,
+                              groupValue: paymentController.char.value,
+                              activeColor: const Color(0xFFFA4A0C),
+                              onChanged: (PaymentGroup? value) {
+                                paymentController
+                                    .onClickPayment(PaymentGroup.bankAccount);
+                              }),
+                        )),
                   ],
                 ),
               ),
@@ -178,66 +172,64 @@ class PaymentView extends GetView<PaymentController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ListTile(
-                      title: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                    Obx(() => ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Door Delivery",
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400),
+                              )
+                            ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "Door Delivery",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                      leading: Radio<DeliveryGroup>(
-                          value: DeliveryGroup.doorDelivery,
-                          groupValue: _group,
-                          activeColor:  const Color(0xFFFA4A0C),
-                          onChanged: (DeliveryGroup? value) {
-                            // setState(() {
-                            //   _group = value;
-                            // });
-                          }),
-                    ),
+                          leading: Radio<DeliveryGroup>(
+                              value: DeliveryGroup.doorDelivery,
+                              groupValue: paymentController.group.value,
+                              activeColor: const Color(0xFFFA4A0C),
+                              onChanged: (DeliveryGroup? value) {
+                                paymentController.onClickDelivery(
+                                    DeliveryGroup.doorDelivery);
+                              }),
+                        )),
                     const Divider(
                         color: Colors.black26, indent: 80, endIndent: 30),
-                    ListTile(
-                      title: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                    Obx(() => ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Pick up",
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400),
+                              )
+                            ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "Pick up",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                      leading: Radio<DeliveryGroup>(
-                          value: DeliveryGroup.pickUp,
-                          groupValue: _group,
-                          activeColor:  const Color(0xFFFA4A0C),
-                          onChanged: (DeliveryGroup? value) {
-                            // setState(() {
-                            //   _group = value;
-                            // });
-                          }),
-                    ),
+                          leading: Radio<DeliveryGroup>(
+                              value: DeliveryGroup.pickUp,
+                              groupValue: paymentController.group.value,
+                              activeColor: const Color(0xFFFA4A0C),
+                              onChanged: (DeliveryGroup? value) {
+                                paymentController
+                                    .onClickDelivery(DeliveryGroup.pickUp);
+                              }),
+                        )),
                   ],
                 ),
               ),
@@ -283,7 +275,8 @@ class PaymentView extends GetView<PaymentController> {
               const SizedBox(
                 height: 41,
               ),
-              const ActionButtonConfirmWidget(buttonAction: "Proceed to payment")
+              const ActionButtonConfirmWidget(
+                  buttonAction: "Proceed to payment")
             ],
           ),
         ),

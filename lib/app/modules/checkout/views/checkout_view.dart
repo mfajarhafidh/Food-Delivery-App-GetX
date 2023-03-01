@@ -7,10 +7,7 @@ import '../../shares/color_theme_widget/color_theme_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/checkout_controller.dart';
 
-// enum RadioButtonProfile { cardProfile, bankAccountProfile, paypalProfile }
-
 class CheckoutView extends GetView<CheckoutController> {
-  // RadioButtonProfile? _character = RadioButtonProfile.cardProfile;
   CheckoutController checkoutController = Get.put(CheckoutController());
 
   @override

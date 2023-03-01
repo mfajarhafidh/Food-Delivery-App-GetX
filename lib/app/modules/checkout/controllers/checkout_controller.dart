@@ -7,7 +7,6 @@ class CheckoutController extends GetxController {
 
   final Rx<RadioButtonProfile> character = RadioButtonProfile.doorDelivery.obs;
 
-
   void onClickRadio(value){
     character.value = value;
   }
