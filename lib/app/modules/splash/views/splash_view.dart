@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/app/modules/home/views/home_view.dart';
-import 'package:food_delivery/app/modules/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
+import 'package:food_delivery/app/modules/auth/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shares/color_theme_widget/color_theme_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/splash_controller.dart';
 

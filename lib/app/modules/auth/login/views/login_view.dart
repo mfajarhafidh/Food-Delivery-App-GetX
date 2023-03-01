@@ -3,8 +3,9 @@ import 'package:food_delivery/app/modules/home/views/home_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/button_widget/button_widget.dart';
-import '../../../routes/app_pages.dart';
+import '../../../shares/button_widget/button_widget.dart';
+import '../../../../routes/app_pages.dart';
+import '../../../shares/color_theme_widget/color_theme_widget.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -68,7 +69,7 @@ class LoginView extends GetView<LoginController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ButtonWidget(textTitle: "Login", screen: Routes.HOME)
+                        buttonLoginWidget()
                       ],
                     ),
                   ],
@@ -76,6 +77,26 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buttonLoginWidget(){
+    return SizedBox(
+      width: 314,
+      height: 70,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: deepOrange800,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        onPressed: () => Get.offNamed(Routes.HOME),
+        child: Text(
+          "Login",
+          style: const TextStyle(color: Color(0xffffffff), fontSize: 20, fontFamily: 'SF-Pro'),
         ),
       ),
     );

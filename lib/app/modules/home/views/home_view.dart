@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_delivery/app/modules/cart/views/cart_view.dart';
 import 'package:food_delivery/app/modules/detail_food/views/detail_food_view.dart';
-import 'package:food_delivery/app/modules/empty_history/views/empty_history_view.dart';
-import 'package:food_delivery/app/modules/empty_offer/views/empty_offer_view.dart';
-import 'package:food_delivery/app/modules/empty_order/views/empty_order_view.dart';
-import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
+import 'package:food_delivery/app/modules/empty_pages/empty_history/views/empty_history_view.dart';
+import 'package:food_delivery/app/modules/empty_pages/empty_offer/views/empty_offer_view.dart';
+import 'package:food_delivery/app/modules/empty_pages/empty_order/views/empty_order_view.dart';
+import 'package:food_delivery/app/modules/profiles/profile/views/profile_view.dart';
 import 'package:food_delivery/app/modules/search/views/search_view.dart';
-import 'package:food_delivery/app/modules/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
+import 'package:food_delivery/app/modules/auth/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
 
 import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
-import '../../../../shares/color_theme_widget/color_theme_widget.dart';
-import '../../../../shares/food_card_widget/food_card_widget.dart';
+import '../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shares/food_card_widget/food_card_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 

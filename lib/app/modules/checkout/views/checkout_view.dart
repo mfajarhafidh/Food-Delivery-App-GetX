@@ -3,7 +3,7 @@ import 'package:food_delivery/app/modules/payment/views/payment_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shares/color_theme_widget/color_theme_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/checkout_controller.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/app/modules/login/views/login_view.dart';
-import 'package:food_delivery/app/modules/sign_up/views/sign_up_view.dart';
+import 'package:food_delivery/app/modules/auth/login/views/login_view.dart';
+import 'package:food_delivery/app/modules/auth/sign_up/views/sign_up_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../../shares/color_theme_widget/color_theme_widget.dart';
 import '../controllers/tab_bar_login_signup_controller.dart';
 
 class TabBarLoginSignupView extends GetView<TabBarLoginSignupController> {

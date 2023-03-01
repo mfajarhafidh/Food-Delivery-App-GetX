@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
+import 'package:food_delivery/app/modules/profiles/profile/views/profile_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/button_widget/button_widget.dart';
-import '../../../../shares/font_widget/font_widget.dart';
-import '../../../routes/app_pages.dart';
+import '../../../shares/button_widget/button_widget.dart';
+import '../../../shares/font_widget/font_widget.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/profile_change_controller.dart';
 
 enum RadioButtonProfile { cardProfile, bankAccountProfile, paypalProfile }

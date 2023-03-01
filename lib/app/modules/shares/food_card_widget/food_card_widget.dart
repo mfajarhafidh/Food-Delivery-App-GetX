@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/app/modules/detail_food/views/detail_food_view.dart';
 import 'package:get/get.dart';
 
-import '../../app/routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 
 class FoodCardWidget extends StatelessWidget {
   const FoodCardWidget({

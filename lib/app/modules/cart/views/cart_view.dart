@@ -5,13 +5,13 @@ import 'package:food_delivery/app/modules/home/views/home_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/button_widget/button_widget.dart';
-import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shares/button_widget/button_widget.dart';
+import '../../shares/color_theme_widget/color_theme_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/cart_controller.dart';
 
 class CartView extends GetView<CartController> {
-  List<MyModel> models = [
+  final List<MyModel> models = [
     MyModel(name: 'product1', image: 'assets/img/food1.png', price: 215.80),
     MyModel(name: 'product2', image: 'assets/img/food1.png', price: 415.30),
     MyModel(name: 'product3', image: 'assets/img/food1.png', price: 115.50),
