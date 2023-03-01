@@ -5,6 +5,7 @@ import 'package:food_delivery/shares/color_theme_widget/color_theme_widget.dart'
 import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/detail_food_controller.dart';
 
 class DetailFoodView extends GetView<DetailFoodController> {
@@ -109,7 +110,7 @@ class DetailFoodView extends GetView<DetailFoodController> {
                           'All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.'),
                       Padding(
                         padding: EdgeInsets.only(bottom: 20, top: 50),
-                        child: ButtonWidget(textTitle: "Add to cart", screen: CartView()),
+                        child: ButtonWidget(textTitle: "Add to cart", screen: Routes.CART),
                       )
                     ],
                   ),

@@ -5,6 +5,7 @@ import 'package:food_delivery/app/modules/tab_bar_login_signup/views/tab_bar_log
 import 'package:get/get.dart';
 
 import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -71,7 +72,7 @@ class SplashView extends GetView<SplashController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Get.off(TabBarLoginSignupView()),
+                  onTap: () => Get.offNamed(Routes.TAB_BAR_LOGIN_SIGNUP),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 100,

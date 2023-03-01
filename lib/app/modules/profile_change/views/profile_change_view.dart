@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
 import '../../../../shares/font_widget/font_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/profile_change_controller.dart';
 
 enum RadioButtonProfile { cardProfile, bankAccountProfile, paypalProfile }
@@ -290,7 +291,7 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: ButtonWidget(textTitle: "Update", screen: ProfileView()),
+                      child: ButtonWidget(textTitle: "Update", screen: Routes.PROFILE),
                     )
                   ],
                 ),

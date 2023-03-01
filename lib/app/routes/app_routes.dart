@@ -19,6 +19,8 @@ abstract class Routes {
   static const EMPTY_OFFER = _Paths.EMPTY_OFFER;
   static const EMPTY_HISTORY = _Paths.EMPTY_HISTORY;
   static const SEARCH = _Paths.SEARCH;
+  static const NO_INTERNET = _Paths.NO_INTERNET;
+  static const NO_ITEM = _Paths.NO_ITEM;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const EMPTY_OFFER = '/empty-offer';
   static const EMPTY_HISTORY = '/empty-history';
   static const SEARCH = '/search';
+  static const NO_INTERNET = '/no-internet';
+  static const NO_ITEM = '/no-item';
 }

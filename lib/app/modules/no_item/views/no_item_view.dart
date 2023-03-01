@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/app/modules/home/views/home_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../shares/button_widget/button_widget.dart';
-import '../../../routes/app_pages.dart';
-import '../controllers/empty_history_controller.dart';
+import '../controllers/no_item_controller.dart';
 
-class EmptyHistoryView extends GetView<EmptyHistoryController> {
+class NoItemView extends GetView<NoItemController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,45 +18,43 @@ class EmptyHistoryView extends GetView<EmptyHistoryController> {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {Get.back();},
+                      onPressed: () {},
                       icon: Image.asset('assets/img/btn_back.png')),
-                  const SizedBox(
-                    height: 30,
-                    width: 300,
-                    child: Text(
-                        textAlign: TextAlign.center,
-                        "History",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: SizedBox(
+                      height: 30,
+                      width: 300,
+                      child: TextFormField(
+                        style:
+                            const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                        decoration: const InputDecoration(border: InputBorder.none),
+                      ),
+                    ),
                   )
                 ],
               ),
               const SizedBox(
-                height: 100,
+                height: 175,
               ),
               Column(
                 children: [
-                  Image.asset('assets/img/history.png', color: Colors.black12),
+                  Image.asset('assets/img/search.png', color: Colors.black12),
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    "No History Yet",
+                    "Item Not Found",
                     style: 
                     TextStyle(color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text("Hit the orange button down",
+                  const Text("Try searching the item with",
                       style: TextStyle(fontSize: 18, color: Colors.black26)),
-                  const Text("below to Create an order",
+                  const Text("a different keyword.",
                       style: TextStyle(fontSize: 18, color: Colors.black26)),
-                  const SizedBox(
-                    height: 200,
-                  ),
-                  ButtonWidget(textTitle: "Start Ordering", screen: Routes.HOME)
                 ],
               )
             ],

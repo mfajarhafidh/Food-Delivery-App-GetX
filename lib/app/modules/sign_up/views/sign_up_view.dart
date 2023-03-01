@@ -5,6 +5,7 @@ import 'package:food_delivery/shares/button_widget/button_widget.dart';
 import 'package:get/get.dart';
 
 import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -67,7 +68,7 @@ class SignUpView extends GetView<SignUpController> {
               SizedBox(
                 height: 100,
               ),
-              ButtonWidget(textTitle: "Sign-up", screen: LoginView())
+              ButtonWidget(textTitle: "Sign-up", screen: Routes.LOGIN)
             ],
           ),
         ),

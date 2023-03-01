@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
 import '../../../../shares/font_widget/font_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -33,7 +34,7 @@ class ProfileView extends GetView<ProfileController> {
                     alignment: Alignment.topLeft,
                     padding: const EdgeInsets.only(left: 30, top: 20),
                     onPressed: () {
-                      Get.to(HomeView());
+                      Get.toNamed(Routes.HOME);
                     },
                     icon: const Icon(Icons.arrow_back_ios)),
                 const SizedBox(height: 30),
@@ -61,7 +62,7 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                           TextButton(
                               onPressed: () {
-                                Get.to(ProfileChangeView());
+                                Get.toNamed(Routes.PROFILE_CHANGE);
                               },
                               child: const Text(
                                 "change",
@@ -158,7 +159,7 @@ class ProfileView extends GetView<ProfileController> {
                       spacingBoxSized(),
                       GestureDetector(
                         onTap: () {
-                          Get.to(EmptyOrderView());
+                          Get.toNamed(Routes.EMPTY_ORDER);
                         },
                         child: Container(
                           height: 50,
@@ -277,7 +278,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                       ButtonWidget(
                         textTitle: "Update",
-                        screen: HomeView(),
+                        screen: Routes.HOME,
                       )
                     ],
                   ),

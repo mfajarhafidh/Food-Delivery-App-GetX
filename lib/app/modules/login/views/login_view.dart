@@ -4,6 +4,7 @@ import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -67,7 +68,7 @@ class LoginView extends GetView<LoginController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ButtonWidget(textTitle: "Login", screen: HomeView())
+                        ButtonWidget(textTitle: "Login", screen: Routes.HOME)
                       ],
                     ),
                   ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/app/modules/detail_food/views/detail_food_view.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
+
 class FoodCard extends StatelessWidget {
   const FoodCard({
     Key? key,
@@ -19,7 +21,7 @@ class FoodCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                Get.to(DetailFoodView());
+                Get.toNamed(Routes.DETAIL_FOOD);
               },
               child: Container(
                 height: 185,

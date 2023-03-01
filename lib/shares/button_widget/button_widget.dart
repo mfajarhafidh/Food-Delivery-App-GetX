@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String textTitle;
-  final Widget screen;
+  final String screen;
   const ButtonWidget({super.key, required this.textTitle, required this.screen});
 
   @override
@@ -19,7 +19,7 @@ class ButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        onPressed: () => Get.to(screen),
+        onPressed: () => Get.toNamed(screen),
         child: Text(
           textTitle,
           style: const TextStyle(color: Color(0xffffffff), fontSize: 20, fontFamily: 'SF-Pro'),

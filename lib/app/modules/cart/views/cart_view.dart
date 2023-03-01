@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
 import '../../../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/cart_controller.dart';
 
 class CartView extends GetView<CartController> {
@@ -35,7 +36,7 @@ class CartView extends GetView<CartController> {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          onPressed: (() {Get.to(HomeView());}),
+          onPressed: (() {Get.toNamed(Routes.HOME);}),
           color: Colors.black,
         ),
         title: const Text(
@@ -86,7 +87,7 @@ class CartView extends GetView<CartController> {
                   );
                 })),
           ),
-          ButtonWidget(textTitle: 'Complete order', screen: CheckoutView()),
+          ButtonWidget(textTitle: 'Complete order', screen: Routes.CHECKOUT),
           const SizedBox(
             height: 16,
           )

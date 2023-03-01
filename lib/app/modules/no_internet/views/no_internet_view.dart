@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 
 import '../../../../shares/button_widget/button_widget.dart';
 import '../../../routes/app_pages.dart';
-import '../controllers/empty_order_controller.dart';
+import '../controllers/no_internet_controller.dart';
 
-class EmptyOrderView extends GetView<EmptyOrderController> {
+class NoInternetView extends GetView<NoInternetController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,35 +18,19 @@ class EmptyOrderView extends GetView<EmptyOrderController> {
           padding: const EdgeInsets.all(20),
           child: ListView(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: Image.asset('assets/img/btn_back.png')),
-                  const SizedBox(
-                      height: 30,
-                      width: 300,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "Orders",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ))
-                ],
-              ),
-              const SizedBox(
-                height: 100,
-              ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/img/orders.png', color: Colors.black12),
+                  const SizedBox(
+                    height: 175,
+                  ),
+                  Image.asset('assets/img/no_internet.png',
+                      color: Colors.black12),
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    "No Orders Yet",
+                    "No Internet Connection",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 28,
@@ -55,14 +39,14 @@ class EmptyOrderView extends GetView<EmptyOrderController> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text("Hit the orange button down",
+                  const Text("Your internet connection is currently",
                       style: TextStyle(fontSize: 18, color: Colors.black26)),
-                  const Text("below to Create an order",
+                  const Text("not available please check or try again.",
                       style: TextStyle(fontSize: 18, color: Colors.black26)),
                   const SizedBox(
-                    height: 200,
+                    height: 50,
                   ),
-                  ButtonWidget(textTitle: "Start Ordering", screen: Routes.HOME)
+                  ButtonWidget(textTitle: "Try Again", screen: Routes.HOME)
                 ],
               )
             ],

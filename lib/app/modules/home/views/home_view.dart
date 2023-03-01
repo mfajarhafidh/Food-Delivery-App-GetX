@@ -14,6 +14,7 @@ import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 import '../../../../shares/color_theme_widget/color_theme_widget.dart';
 import '../../../../shares/food_card_widget/food_card_widget.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -63,7 +64,7 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.only(right: 42.0),
               child: IconButton(
                   onPressed: () {
-                    Get.to(CartView());
+                    Get.toNamed(Routes.CART);
                   },
                   icon: Icon(
                     Icons.shopping_cart_outlined,
@@ -92,7 +93,7 @@ class HomeView extends GetView<HomeController> {
               //To add some elevation & border radius to text field need to wrap in Material
               GestureDetector(
                 onTap: () {
-                  Get.to(SearchView());
+                  Get.toNamed(Routes.SEARCH);
                 },
                 child: Container(
                   height: 60,
@@ -287,7 +288,7 @@ class HomeView extends GetView<HomeController> {
                 label: "Home",
                 icon: IconButton(
                   onPressed: (){
-                    Get.to(HomeView());
+                    Get.toNamed(Routes.HOME);
                     }, 
                   icon: const Icon(Icons.home)),
               ),
@@ -303,7 +304,7 @@ class HomeView extends GetView<HomeController> {
                 label: "Profile",
                 icon: IconButton(
                   onPressed: (){
-                    Get.to(ProfileView());
+                    Get.toNamed(Routes.PROFILE);
                     }, 
                   icon: const Icon(Icons.person)),
               ),
@@ -311,7 +312,7 @@ class HomeView extends GetView<HomeController> {
                 label: "History",
                 icon: IconButton(
                   onPressed: (){
-                    Get.to(EmptyHistoryView());
+                    Get.toNamed(Routes.EMPTY_HISTORY);
                   }, 
                   icon: const Icon(Icons.history)),
               ),
@@ -333,7 +334,7 @@ class HomeView extends GetView<HomeController> {
               children: [
                 ListTile(
                   onTap: () {
-                    Get.to(ProfileView());
+                    Get.toNamed(Routes.PROFILE);
                   },
                   leading: const Icon(Icons.account_circle_outlined,
                       size: 20.0, color: Colors.white),
@@ -346,7 +347,7 @@ class HomeView extends GetView<HomeController> {
                 dividerListTile(),
                 ListTile(
                   onTap: () {
-                    Get.to(EmptyOrderView());
+                    Get.toNamed(Routes.EMPTY_ORDER);
                   },
                   leading: SvgPicture.asset('assets/icon/icon_orders.svg'),
                   title: const Text("Orders",
@@ -358,7 +359,7 @@ class HomeView extends GetView<HomeController> {
                 dividerListTile(),
                 ListTile(
                   onTap: () {
-                    Get.to(EmptyOfferView());
+                    Get.toNamed(Routes.EMPTY_OFFER);
                   },
                   leading: const Icon(Icons.local_offer_outlined,
                       size: 20.0, color: Colors.white),
@@ -394,7 +395,7 @@ class HomeView extends GetView<HomeController> {
                 ),
                 ListTile(
                   onTap: () {
-                    Get.to(TabBarLoginSignupView());
+                    Get.toNamed(Routes.TAB_BAR_LOGIN_SIGNUP);
                   },
                   title: Row(
                     children: const [

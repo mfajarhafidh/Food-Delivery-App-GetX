@@ -16,6 +16,10 @@ import 'package:food_delivery/app/modules/home/bindings/home_binding.dart';
 import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:food_delivery/app/modules/login/bindings/login_binding.dart';
 import 'package:food_delivery/app/modules/login/views/login_view.dart';
+import 'package:food_delivery/app/modules/no_internet/bindings/no_internet_binding.dart';
+import 'package:food_delivery/app/modules/no_internet/views/no_internet_view.dart';
+import 'package:food_delivery/app/modules/no_item/bindings/no_item_binding.dart';
+import 'package:food_delivery/app/modules/no_item/views/no_item_view.dart';
 import 'package:food_delivery/app/modules/payment/bindings/payment_binding.dart';
 import 'package:food_delivery/app/modules/payment/views/payment_view.dart';
 import 'package:food_delivery/app/modules/profile/bindings/profile_binding.dart';
@@ -113,6 +117,16 @@ class AppPages {
       name: _Paths.SEARCH,
       page: () => SearchView(),
       binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.NO_INTERNET,
+      page: () => NoInternetView(),
+      binding: NoInternetBinding(),
+    ),
+    GetPage(
+      name: _Paths.NO_ITEM,
+      page: () => NoItemView(),
+      binding: NoItemBinding(),
     ),
   ];
 }
