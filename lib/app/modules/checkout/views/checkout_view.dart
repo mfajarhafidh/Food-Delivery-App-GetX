@@ -6,10 +6,11 @@ import 'package:get/get.dart';
 import '../../../../shares/color_theme_widget/color_theme_widget.dart';
 import '../controllers/checkout_controller.dart';
 
-enum RadioButtonProfile { cardProfile, bankAccountProfile, paypalProfile }
+// enum RadioButtonProfile { cardProfile, bankAccountProfile, paypalProfile }
 
 class CheckoutView extends GetView<CheckoutController> {
-  RadioButtonProfile? _character = RadioButtonProfile.cardProfile;
+  // RadioButtonProfile? _character = RadioButtonProfile.cardProfile;
+  CheckoutController checkoutController = Get.put(CheckoutController());
 
   @override
   Widget build(BuildContext context) {
@@ -181,6 +182,7 @@ class CheckoutView extends GetView<CheckoutController> {
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           children: [
+                            Obx(() => 
                             ListTile(
                               title: Row(
                                 children: const [
@@ -193,21 +195,20 @@ class CheckoutView extends GetView<CheckoutController> {
                                 ],
                               ),
                               leading: Radio<RadioButtonProfile>(
-                                value: RadioButtonProfile.cardProfile,
-                                groupValue: _character,
+                                value: RadioButtonProfile.doorDelivery,
+                                groupValue: checkoutController.character.value,
                                 activeColor: MaterialStateColor.resolveWith(
                                     (states) => deepOrange800),
-                                onChanged: (RadioButtonProfile? value) {
-                                  // setState(() {
-                                  //   _character = value;
-                                  // });
+                                onChanged: (val) {
+                                  checkoutController.onClickRadio(RadioButtonProfile.doorDelivery);
                                 },
                               ),
-                            ),
+                            ),),
                             Divider(
                                 color: Colors.grey[500],
                                 indent: 80,
                                 endIndent: 30),
+                            Obx(() => 
                             ListTile(
                               title: Row(
                                 children: const [
@@ -220,17 +221,15 @@ class CheckoutView extends GetView<CheckoutController> {
                                 ],
                               ),
                               leading: Radio<RadioButtonProfile>(
-                                value: RadioButtonProfile.paypalProfile,
-                                groupValue: _character,
+                                value: RadioButtonProfile.pickUp,
+                                groupValue: checkoutController.character.value,
                                 activeColor: MaterialStateColor.resolveWith(
                                     (states) => deepOrange800),
-                                onChanged: (RadioButtonProfile? value) {
-                                  // setState(() {
-                                  //   _character = value;
-                                  // });
+                                onChanged: (val) {
+                                  checkoutController.onClickRadio(RadioButtonProfile.pickUp);
                                 },
                               ),
-                            ),
+                            ),)
                           ],
                         ),
                       ),

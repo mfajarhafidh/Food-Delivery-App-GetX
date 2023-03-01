@@ -43,11 +43,7 @@ class DetailFoodView extends GetView<DetailFoodController> {
                                   color: detailfoodController.iconColor.value,
                                 ),
                                 onPressed: () {
-                                  if(detailfoodController.iconColor.value == Color(0x42000000)){
-                                    detailfoodController.iconColor.value = Colors.redAccent;
-                                  }else{
-                                    detailfoodController.iconColor.value = Color(0x42000000);
-                                  }                                  
+                                  detailfoodController.onClickButton();                                  
                                 }),
                         ),),
                       ),

@@ -1,9 +1,20 @@
 import 'package:get/get.dart';
 
+enum RadioButtonProfile { doorDelivery, pickUp }
+
 class CheckoutController extends GetxController {
   //TODO: Implement CheckoutController
 
-  final count = 0.obs;
+  // RadioButtonProfile? _character = RadioButtonProfile.cardProfile;
+  final Rx<RadioButtonProfile> character = RadioButtonProfile.doorDelivery.obs;
+  void onClickRadio(val){
+    if(val == RadioButtonProfile.doorDelivery){
+    }
+    else{
+      
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +27,4 @@ class CheckoutController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }
