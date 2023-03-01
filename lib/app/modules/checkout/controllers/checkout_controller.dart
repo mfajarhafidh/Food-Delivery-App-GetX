@@ -5,14 +5,11 @@ enum RadioButtonProfile { doorDelivery, pickUp }
 class CheckoutController extends GetxController {
   //TODO: Implement CheckoutController
 
-  // RadioButtonProfile? _character = RadioButtonProfile.cardProfile;
   final Rx<RadioButtonProfile> character = RadioButtonProfile.doorDelivery.obs;
-  void onClickRadio(val){
-    if(val == RadioButtonProfile.doorDelivery){
-    }
-    else{
-      
-    }
+
+
+  void onClickRadio(value){
+    character.value = value;
   }
 
   @override
