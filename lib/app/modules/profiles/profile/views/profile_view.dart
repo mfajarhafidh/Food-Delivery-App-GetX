@@ -5,8 +5,8 @@ import 'package:food_delivery/app/modules/profiles/profile_change/views/profile_
 
 import 'package:get/get.dart';
 
-import '../../../shares/button_widget/button_widget.dart';
-import '../../../shares/font_widget/font_widget.dart';
+import '../../../shared/button_widget/button_widget.dart';
+import '../../../shared/font_widget/font_widget.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 

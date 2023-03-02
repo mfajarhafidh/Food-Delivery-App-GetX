@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
-import '../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shared/color_theme_widget/color_theme_widget.dart';
 import '../widgets/food_card_widget/food_card_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';

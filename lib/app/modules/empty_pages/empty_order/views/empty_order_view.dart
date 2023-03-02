@@ -3,7 +3,7 @@ import 'package:food_delivery/app/modules/home/views/home_view.dart';
 
 import 'package:get/get.dart';
 
-import '../../../shares/button_widget/button_widget.dart';
+import '../../../shared/button_widget/button_widget.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/empty_order_controller.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/app/modules/shares/button_widget/button_widget.dart';
+import 'package:food_delivery/app/modules/shared/button_widget/button_widget.dart';
 
 import 'package:get/get.dart';
 

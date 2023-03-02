@@ -4,7 +4,7 @@ import 'package:food_delivery/app/modules/auth/tab_bar_login_signup/views/tab_ba
 
 import 'package:get/get.dart';
 
-import '../../shares/color_theme_widget/color_theme_widget.dart';
+import '../../shared/color_theme_widget/color_theme_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/splash_controller.dart';
 
