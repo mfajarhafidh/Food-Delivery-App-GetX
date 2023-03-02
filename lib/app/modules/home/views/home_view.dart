@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery/app/modules/cart/views/cart_view.dart';
-import 'package:food_delivery/app/modules/detail_food/views/detail_food_view.dart';
-import 'package:food_delivery/app/modules/empty_pages/empty_history/views/empty_history_view.dart';
-import 'package:food_delivery/app/modules/empty_pages/empty_offer/views/empty_offer_view.dart';
-import 'package:food_delivery/app/modules/empty_pages/empty_order/views/empty_order_view.dart';
-import 'package:food_delivery/app/modules/profiles/profile/views/profile_view.dart';
-import 'package:food_delivery/app/modules/search/views/search_view.dart';
-import 'package:food_delivery/app/modules/auth/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
 
 import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -18,32 +10,15 @@ import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  bool isOpened = false;
-
-  final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
-
-  toggleMenu([bool end = false]) {
-    if (!end) {
-      final state = _sideMenuKey.currentState!;
-      if (state.isOpened) {
-        state.closeSideMenu();
-      } else {
-        state.openSideMenu();
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return SideMenu(
       radius: BorderRadius.circular(30),
-      key: _sideMenuKey,
       menu: buildMenu(),
+      key: controller.sideMenuKey,
       background: const Color(0xFFFA4A0C),
       type: SideMenuType.shrinkNSlide,
-      onChange: (isOpened) {
-        // setState(() => isOpened = isOpened);
-      },
       child: Scaffold(
         backgroundColor: background,
         appBar: AppBar(
@@ -52,7 +27,7 @@ class HomeView extends GetView<HomeController> {
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
-              toggleMenu();
+              controller.toggleMenu();
             },
             icon: const Icon(
               Icons.menu,
