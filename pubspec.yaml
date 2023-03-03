@@ -12,6 +12,9 @@ dependencies:
   shrink_sidemenu: 2.0.0+2-null-safety
   bottom_navy_bar: 6.0.0
   flutter_slidable: 2.0.0
+  dio: 5.0.1
+  logger: 1.2.2
+  skeletons: 0.0.3
   flutter: 
     sdk: flutter
 
