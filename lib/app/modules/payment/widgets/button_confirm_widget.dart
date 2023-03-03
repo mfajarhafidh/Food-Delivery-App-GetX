@@ -42,7 +42,7 @@ class ActionButtonConfirmWidget extends StatelessWidget {
                           child: Text("Please Note ", style: TextStyle
                             (fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            fontFamily: "SFprotext/SF-Pro-Text-Regular",),),
+                            fontFamily: "SF-Pro-Text-Regular",),),
                         ),
                       ),
                       SizedBox(
@@ -62,7 +62,7 @@ class ActionButtonConfirmWidget extends StatelessWidget {
                                           (horizontal: 40),
                                         child: Text(
                                           "DELIVERY TO MAINLAND",
-                                          style: TextStyle(fontSize: 15,fontFamily:"SFprotext/SF-Pro-Text-Regular" ,color:
+                                          style: TextStyle(fontSize: 15,fontFamily:"SF-Pro-Text-Regular" ,color:
                                           Colors.grey),
                                         ),
                                       ),
@@ -95,7 +95,7 @@ class ActionButtonConfirmWidget extends StatelessWidget {
                                           (horizontal: 40),
                                         child: Text(
                                           "DELIVERY TO ISLAND",
-                                          style: TextStyle(fontSize: 15,fontFamily:"SFprotext/SF-Pro-Text-Regular" ,color:
+                                          style: TextStyle(fontSize: 15,fontFamily:"SF-Pro-Text-Regular" ,color:
                                           Colors.grey),
                                         ),
                                       ),
@@ -128,7 +128,7 @@ class ActionButtonConfirmWidget extends StatelessWidget {
                           TextButton(
                             onPressed: (){
                               print("Confirm cancel press");
-                              Navigator.of(context).pop();
+                              Get.back();
                             },
                             child: Padding(
                               padding:  EdgeInsets.symmetric(horizontal: 30),
@@ -148,7 +148,7 @@ class ActionButtonConfirmWidget extends StatelessWidget {
                           TextButton(
                             onPressed: (){
                               print("Confirm proceed press");
-                              Navigator.of(context).pop();
+                              Get.back();
                             },
                             child: Padding(
                               padding:  EdgeInsets.symmetric(horizontal: 50),
