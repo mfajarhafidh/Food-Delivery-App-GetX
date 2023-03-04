@@ -7,9 +7,11 @@ import '../../../routes/app_pages.dart';
 class FoodCard extends StatelessWidget {
   const FoodCard({
     Key? key,
-    required this.title, required this.imageFood}) : super(key: key);
+    required this.title, this.imageFood = '', this.imageUrl = '', this.idSearch = ''}) : super(key: key);
   final String title;
   final String imageFood;
+  final String imageUrl;
+  final String idSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,8 @@ class FoodCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                Get.toNamed(Routes.DETAIL_FOOD);
+                Get.toNamed(Routes.DETAIL_FOOD, arguments: {'id' : idSearch});
+                print(idSearch);
               },
               child: Container(
                 height: 185,
@@ -74,9 +77,9 @@ class FoodCard extends StatelessWidget {
                 child: SizedBox(
                   height: 100,
                   width: 100,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage(imageFood),
-                  ),
+                  child: imageUrl == ''
+                  ? CircleAvatar(backgroundImage: AssetImage(imageFood))
+                  : CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
                 ))
           ],
         ),

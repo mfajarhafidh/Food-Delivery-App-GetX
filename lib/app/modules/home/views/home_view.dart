@@ -12,8 +12,6 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
 
-  final HomeController homeController = Get.put(HomeController());
-
   @override
   Widget build(BuildContext context) {
     return SideMenu(
@@ -162,21 +160,21 @@ class HomeView extends GetView<HomeController> {
                       Expanded(
                           child: TabBarView(clipBehavior: Clip.none, children: [
                         Obx(() => Container(
-                              child: homeController.isLoading.value == true
+                              child: controller.isLoading.value == true
                                   ? SkeletonListView()
-                                  : homeController.listMeal.isEmpty
+                                  : controller.listMeal.isEmpty
                                       ? SizedBox()
                                       : ListView(
                                           scrollDirection: Axis.horizontal,
                                           children: [
-                                            ...homeController.listMeal.map((item) => 
+                                            ...controller.listMeal.map((item) => 
                                             Padding(
                                               padding: EdgeInsets.only(
                                                 right: 20,
                                               ),
                                               child: FoodCardWidget(
                                                 imageUrl: item.strMealThumb,
-                                                text: item.strMeal,
+                                                text: item.strMeal, id: item.idMeal,
                                               ),
                                             )
                                             )

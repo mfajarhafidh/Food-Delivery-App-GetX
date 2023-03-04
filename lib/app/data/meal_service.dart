@@ -1,4 +1,4 @@
-import 'package:food_delivery/app/models/meal_models.dart';
+import 'package:food_delivery/app/models/meal_model.dart';
 import 'package:get/get.dart';
 
 class MealService {

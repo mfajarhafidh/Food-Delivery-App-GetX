@@ -12,13 +12,18 @@ class SearchView extends GetView<SearchController> {
       appBar: AppBar(
         elevation: 0,
         leading: GestureDetector(
-          onTap: (){Get.back();},
-          child: const Icon( Icons.arrow_back_ios, color: Colors.black,  ),
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
         backgroundColor: Colors.white,
         title: Container(
           padding: const EdgeInsets.all(8),
-              child: TextFormField(
+          child: TextFormField(
             decoration:
                 const InputDecoration(border: InputBorder.none, hintText: ""),
           ),
@@ -26,7 +31,7 @@ class SearchView extends GetView<SearchController> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
+          children: [
             Container(
               height: 30,
               margin: const EdgeInsets.only(top: 30.0),
@@ -41,52 +46,98 @@ class SearchView extends GetView<SearchController> {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 45.0,
-                top: 120.0,
-              ),
-              child: GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 50,
-                children: const [
-                  FoodCard(
-                    title: "Veggoe\nTomatto Mix",
-                    imageFood: 'assets/img/ic_food.png',
-                  ),
-                  FoodCard(
-                    title: "Egg and\nCucumber..",
-                    imageFood: 'assets/img/ic_food3.png',
-                  ),
-                  FoodCard(
-                    title: "Fried\nChicken m.",
-                    imageFood: 'assets/img/ic_food4.png',
-                  ),
-                  FoodCard(
-                    title: "Moi-moi\nand Ekpa",
-                    imageFood: 'assets/img/ic_food5.png',
-                  ),
-                  FoodCard(
-                    title: "Bakpau",
-                    imageFood: 'assets/img/ic_food5.png',
-                  ),
-                  FoodCard(
-                    title: "chuankie",
-                    imageFood: 'assets/img/ic_food5.png',
-                  ),
-                  FoodCard(
-                    title: "Veggoe\nTomatto Mix",
-                    imageFood: 'assets/img/ic_food.png',
-                  ),
-                  FoodCard(
-                    title: "Egg and\nCucumber..",
-                    imageFood: 'assets/img/ic_food3.png',
-                  ),
-                ],
-              ),
-            ),
+            // Container(
+            //   margin: const EdgeInsets.only(
+            //     left: 45.0,
+            //     top: 120.0,
+            //   ),
+            //   child: GridView.count(
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     shrinkWrap: true,
+            //       crossAxisCount: 2,
+            //       mainAxisSpacing: 50,
+            //     children: [
+            //       FoodCard(
+            //         title: "Veggoe\nTomatto Mix",
+            //         imageFood: 'assets/img/ic_food.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Egg and\nCucumber..",
+            //         imageFood: 'assets/img/ic_food3.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Fried\nChicken m.",
+            //         imageFood: 'assets/img/ic_food4.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Moi-moi\nand Ekpa",
+            //         imageFood: 'assets/img/ic_food5.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Bakpau",
+            //         imageFood: 'assets/img/ic_food5.png',
+            //       ),
+            //       FoodCard(
+            //         title: "chuankie",
+            //         imageFood: 'assets/img/ic_food5.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Veggoe\nTomatto Mix",
+            //         imageFood: 'assets/img/ic_food.png',
+            //       ),
+            //       FoodCard(
+            //         title: "Egg and\nCucumber..",
+            //         imageFood: 'assets/img/ic_food3.png',
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            Obx(() => Container(
+                  margin: EdgeInsets.only(left: 45, top: 120),
+                  child: controller.isLoading.value == true
+                      ? CircularProgressIndicator()
+                      : GridView.count(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 50,
+                          children: [
+                            // Padding(
+                            //   padding: EdgeInsets.only(
+                            //     right: 20,
+                            //   ),
+                            //   child: FoodCard(
+                            //     imageUrl: controller
+                            //                   .searchMealItem
+                            //                   .value
+                            //                   ?.strMealThumb ??
+                            //               '',
+                            //     title: controller
+                            //                   .detailMealSearch
+                            //                   .value
+                            //                   ?.strMeal ??
+                            //               '',
+                            //     idSearch: controller
+                            //                   .detailMealSearch
+                            //                   .value
+                            //                   ?.idMeal ??
+                            //               '',
+                            //   ),
+                            // ),
+                            ...controller.searchMealItem.map((item) => 
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                right: 20,
+                                              ),
+                                              child: FoodCard(
+                                                imageUrl: item.strMealThumb,
+                                                title: item.strMeal, idSearch: item.idMeal,
+                                              ),
+                                            )
+                                            )
+                          ],
+                        ),
+                )),
           ],
         ),
       ),

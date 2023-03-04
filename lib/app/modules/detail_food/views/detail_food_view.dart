@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/app/modules/cart/views/cart_view.dart';
 import 'package:food_delivery/app/modules/shared/color_theme_widget/color_theme_widget.dart';
 
 import 'package:get/get.dart';
@@ -9,8 +8,6 @@ import '../../../routes/app_pages.dart';
 import '../controllers/detail_food_controller.dart';
 
 class DetailFoodView extends GetView<DetailFoodController> {
-  final detailfoodController = Get.put(DetailFoodController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,84 +34,120 @@ class DetailFoodView extends GetView<DetailFoodController> {
                         ),
                       ),
                       Expanded(
-                        child: Obx(() => ListTile(
-                          trailing: IconButton(
+                        child: Obx(
+                          () => ListTile(
+                            trailing: IconButton(
                                 icon: Icon(
                                   Icons.favorite,
-                                  color: detailfoodController.iconColor.value,
+                                  color: controller.iconColor.value,
                                 ),
                                 onPressed: () {
-                                  detailfoodController.onClickButton();                                  
+                                  controller.onClickButton();
                                 }),
-                        ),),
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 275,
-                  width: 275,
-                  child: Image.asset('assets/img/food_0.png'),
-                ),
-                const Text(
-                  'Veggie tomato mix',
-                  style: TextStyle(
-                      fontSize: 28,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: const Text(
-                    'N1,900',
-                    style: TextStyle(
-                        color: Color(0xffFA4A0C),
-                        fontSize: 22,
-                        fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(top: 21.5),
-                        child: const Text(
-                          'Delivery info',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontFamily: 'SF Pro',
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      const Text(
-                          'Delivered between monday aug and thursday 20 from 8pm to 91:32 pm'),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: const Text(
-                          'Return policy',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontFamily: 'SF Pro',
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      const Text(
-                          'All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.'),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 20, top: 50),
-                        child: ButtonWidget(textTitle: "Add to cart", screen: Routes.CART),
-                      )
-                    ],
-                  ),
-                )
+                Obx(() => Container(
+                    child: controller.isLoading.value == true
+                        ? CircularProgressIndicator()
+                        : Column(
+                            children: [
+                              Container(
+                                  height: 275,
+                                  width: 275,
+                                  child: Image(
+                                      image: NetworkImage(controller
+                                              .detailMeal
+                                              .value
+                                              ?.strMealThumb ??
+                                          ''))),
+                              SizedBox(height: 45),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20),
+                                child: Text(
+                                  controller
+                                              .detailMeal
+                                              .value
+                                              ?.strMeal ??
+                                          '',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      fontFamily: 'SF Pro',
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Container(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Text(
+                                  "N1,900",
+                                  style: TextStyle(
+                                      color: Color(0xffFA4A0C),
+                                      fontSize: 22,
+                                      fontFamily: 'SF Pro',
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 50),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding:
+                                          const EdgeInsets.only(top: 21.5),
+                                      child: const Text(
+                                        'Youtube Link',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: 'SF Pro',
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                    Text(controller
+                                              .detailMeal
+                                              .value
+                                              ?.strYoutube ??
+                                          ''),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5),
+                                      child: const Text(
+                                        'Instructions',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: 'SF Pro',
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                    Text(controller
+                                              .detailMeal
+                                              .value
+                                              ?.strInstructions ??
+                                          ''),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: 20, top: 50),
+                                      child: ButtonWidget(
+                                          textTitle: "Add to cart",
+                                          screen: Routes.CART),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ))),
               ],
             ),
           ],

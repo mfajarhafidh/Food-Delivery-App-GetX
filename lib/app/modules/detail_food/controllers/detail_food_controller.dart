@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/app/data/meal_detail_service.dart';
+import 'package:food_delivery/app/models/meal_detail_model.dart';
 import 'package:get/get.dart';
 
 class DetailFoodController extends GetxController {
-  //TODO: Implement DetailFoodController
 
   final Rx<Color> iconColor = Colors.black26.obs;
   void onClickButton() {
@@ -13,16 +14,31 @@ class DetailFoodController extends GetxController {
     }
   }
 
+  RxBool isLoading = false.obs;
+  final mealDetailService = MealDetailService();
+  String id = '';
+  Rx<Meal?> detailMeal = Meal(idMeal: '').obs;
+
   @override
   void onInit() {
     super.onInit();
+    final args = Get.arguments;
+    id = args['id'];
+    getDetailMealsItem();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  getDetailMealsItem() async{
+    isLoading(true);
+    try{
+      DetailMealsModel response = await mealDetailService.getDetailMeals(id: id);
+      var res = response.meals![0];
+      detailMeal(res);
+      isLoading(false);
+    }
+    catch(e){
+      isLoading(false);
+      print(e.toString());
+      Get.snackbar('Error', e.toString());
+    }
   }
-
-  @override
-  void onClose() {}
 }

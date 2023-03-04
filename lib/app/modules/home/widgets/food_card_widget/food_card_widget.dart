@@ -9,15 +9,17 @@ class FoodCardWidget extends StatelessWidget {
     Key? key,
     this.image = '',
     required this.text,
-    this.imageUrl = '',
+    this.imageUrl = '', 
+    this.id = '',
   }) : super(key: key);
-  final String image, text, imageUrl;
+  final String image, text, imageUrl, id;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.DETAIL_FOOD);
+        Get.toNamed(Routes.DETAIL_FOOD, arguments: {'id' : id});
+        print(id);
       },
       child: SizedBox(
         height: 300,
@@ -39,11 +41,30 @@ class FoodCardWidget extends StatelessWidget {
                         blurRadius: 40)
                   ],
                 ),
-                child: Center(
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 10,),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          "N1,900",
+                          style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),

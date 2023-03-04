@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/app/data/meal_service.dart';
-import 'package:food_delivery/app/models/meal_models.dart';
+import 'package:food_delivery/app/models/meal_model.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class HomeController extends GetxController {
@@ -24,6 +25,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     getListMeals();
+    Logger().d(getListMeals());
   }
 
   getListMeals() async{
