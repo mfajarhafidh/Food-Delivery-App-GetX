@@ -1,6 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:food_delivery/app/data/meal_detail_service.dart';
 import 'package:food_delivery/app/data/search_service.dart';
-import 'package:food_delivery/app/models/meal_detail_model.dart';
 import 'package:food_delivery/app/models/meal_search_model.dart';
 import 'package:get/get.dart';
 
@@ -11,28 +11,43 @@ class SearchController extends GetxController {
 
   final mealDetailService = MealDetailService();
   String idSearch = '';
-  Rx<Meal?> detailMealSearch = Meal(idMeal: '').obs;
+  Rx<MealSearch?> detailMealSearch = MealSearch(strMeal: '').obs;
+
+  final searchController = TextEditingController();
+  RxString searchParams = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // final param = Get.arguments;
-    // idSearch = param['id'];
     getSearchMeals();
-    // getDetailMealsItem();
+    searchController.addListener(() {
+      searchParams.value = searchController.text;
+    });
+
+    debounce(searchParams, (_) {
+      print("debounce $_");
+    }, time: Duration(seconds: 1));
   }
 
-  getSearchMeals() async{
+  getSearchMeals() async {
     isLoading(true);
-    try{
-      SearchMealsModel responseSearch = await mealSearchService.getSearchMeals();
-      // DetailMealsModel responseDetail = await mealDetailService.getDetailMeals(id: idSearch);
-      // var res = responseDetail.meals![0];
-      searchMealItem.addAll(responseSearch.meals);
+    try {
+      SearchMealsModel responseSearch =
+          await mealSearchService.getSearchMeals(searchParams: searchParams.value);
+      // if(searchParams.value.){
+        searchMealItem.addAll(responseSearch.meals);
+        // searchMealItem.addAll(responseSearch.meals);
+      // } else{
+        // searchMealItem.addIf(responseSearch.meals.isNotEmpty, detailMealSearch)
+        // searchMealItem.addAllIf(detailMealSearch.value?.strMeal == searchParams.value, responseSearch.meals);
+        // searchMealItem.addAll(responseSearch.meals);
+      // }
+      // searchMealItem.addAll(responseSearch.meals);
+      // SearchMealsModel responseSearch = await mealSearchService.getSearchMeals(searchParams: searchController.text);
+      // var res = responseSearch.meals[1];
       // detailMealSearch(res);
       isLoading(false);
-    }
-    catch(e){
+    } catch (e) {
       isLoading(false);
       Get.snackbar('Error', e.toString());
     }

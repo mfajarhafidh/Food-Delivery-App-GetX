@@ -24,100 +24,100 @@ class SearchMealsModel {
 
 class MealSearch {
     MealSearch({
-        required this.idMeal,
-        required this.strMeal,
-        required this.strDrinkAlternate,
-        required this.strCategory,
-        required this.strArea,
-        required this.strInstructions,
-        required this.strMealThumb,
-        required this.strTags,
-        required this.strYoutube,
-        required this.strIngredient1,
-        required this.strIngredient2,
-        required this.strIngredient3,
-        required this.strIngredient4,
-        required this.strIngredient5,
-        required this.strIngredient6,
-        required this.strIngredient7,
-        required this.strIngredient8,
-        required this.strIngredient9,
-        required this.strIngredient10,
-        required this.strIngredient11,
-        required this.strIngredient12,
-        required this.strIngredient13,
-        required this.strIngredient14,
-        required this.strIngredient15,
-        required this.strIngredient16,
-        required this.strIngredient17,
-        required this.strIngredient18,
-        required this.strIngredient19,
-        required this.strIngredient20,
-        required this.strMeasure1,
-        required this.strMeasure2,
-        required this.strMeasure3,
-        required this.strMeasure4,
-        required this.strMeasure5,
-        required this.strMeasure6,
-        required this.strMeasure7,
-        required this.strMeasure8,
-        required this.strMeasure9,
-        required this.strMeasure10,
-        required this.strMeasure11,
-        required this.strMeasure12,
-        required this.strMeasure13,
-        required this.strMeasure14,
-        required this.strMeasure15,
-        required this.strSource,
-        required this.strImageSource,
-        required this.strCreativeCommonsConfirmed,
-        required this.dateModified,
+        this.idMeal,
+        this.strMeal,
+        this.strDrinkAlternate,
+        this.strCategory,
+        this.strArea,
+        this.strInstructions,
+        this.strMealThumb,
+        this.strTags,
+        this.strYoutube,
+        this.strIngredient1,
+        this.strIngredient2,
+        this.strIngredient3,
+        this.strIngredient4,
+        this.strIngredient5,
+        this.strIngredient6,
+        this.strIngredient7,
+        this.strIngredient8,
+        this.strIngredient9,
+        this.strIngredient10,
+        this.strIngredient11,
+        this.strIngredient12,
+        this.strIngredient13,
+        this.strIngredient14,
+        this.strIngredient15,
+        this.strIngredient16,
+        this.strIngredient17,
+        this.strIngredient18,
+        this.strIngredient19,
+        this.strIngredient20,
+        this.strMeasure1,
+        this.strMeasure2,
+        this.strMeasure3,
+        this.strMeasure4,
+        this.strMeasure5,
+        this.strMeasure6,
+        this.strMeasure7,
+        this.strMeasure8,
+        this.strMeasure9,
+        this.strMeasure10,
+        this.strMeasure11,
+        this.strMeasure12,
+        this.strMeasure13,
+        this.strMeasure14,
+        this.strMeasure15,
+        this.strSource,
+        this.strImageSource,
+        this.strCreativeCommonsConfirmed,
+        this.dateModified,
     });
 
-    String idMeal;
-    String strMeal;
+    String? idMeal;
+    String? strMeal;
     dynamic strDrinkAlternate;
-    String strCategory;
-    String strArea;
-    String strInstructions;
-    String strMealThumb;
+    String? strCategory;
+    String? strArea;
+    String? strInstructions;
+    String? strMealThumb;
     dynamic strTags;
-    String strYoutube;
-    String strIngredient1;
-    String strIngredient2;
-    String strIngredient3;
-    String strIngredient4;
-    String strIngredient5;
-    String strIngredient6;
-    String strIngredient7;
-    String strIngredient8;
-    String strIngredient9;
-    String strIngredient10;
-    String strIngredient11;
-    String strIngredient12;
-    String strIngredient13;
-    String strIngredient14;
-    String strIngredient15;
+    String? strYoutube;
+    String? strIngredient1;
+    String? strIngredient2;
+    String? strIngredient3;
+    String? strIngredient4;
+    String? strIngredient5;
+    String? strIngredient6;
+    String? strIngredient7;
+    String? strIngredient8;
+    String? strIngredient9;
+    String? strIngredient10;
+    String? strIngredient11;
+    String? strIngredient12;
+    String? strIngredient13;
+    String? strIngredient14;
+    String? strIngredient15;
     dynamic strIngredient16;
     dynamic strIngredient17;
     dynamic strIngredient18;
     dynamic strIngredient19;
     dynamic strIngredient20;
-    String strMeasure1;
-    String strMeasure2;
-    String strMeasure3;
-    String strMeasure4;
-    String strMeasure5;
-    String strMeasure6;
-    String strMeasure7;
-    String strMeasure8;
-    String strMeasure9;
-    String strMeasure10;
-    String strMeasure11;
-    String strMeasure12;
-    String strMeasure13;
-    String strMeasure14;
-    String strMeasure15;
+    String? strMeasure1;
+    String? strMeasure2;
+    String? strMeasure3;
+    String? strMeasure4;
+    String? strMeasure5;
+    String? strMeasure6;
+    String? strMeasure7;
+    String? strMeasure8;
+    String? strMeasure9;
+    String? strMeasure10;
+    String? strMeasure11;
+    String? strMeasure12;
+    String? strMeasure13;
+    String? strMeasure14;
+    String? strMeasure15;
     dynamic strSource;
     dynamic strImageSource;
     dynamic strCreativeCommonsConfirmed;

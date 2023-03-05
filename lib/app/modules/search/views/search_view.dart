@@ -9,6 +9,7 @@ class SearchView extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
         leading: GestureDetector(
@@ -23,10 +24,21 @@ class SearchView extends GetView<SearchController> {
         backgroundColor: Colors.white,
         title: Container(
           padding: const EdgeInsets.all(8),
-          child: TextFormField(
-            decoration:
-                const InputDecoration(border: InputBorder.none, hintText: ""),
-          ),
+          child: TextField(
+                // onChanged: (value) => controller.searchMealItem(value),
+                controller: controller.searchController,
+                // onChanged: (valueSearch){
+                //   if(controller.searchParams.isEmpty){
+                //     debounce(controller.searchParams, (callback) => print(callback));
+                //   } else{
+                //     debounce(controller.searchParams, (callback) => print(callback));
+                //   }
+                // },
+                // onChanged: (value) => controller.searchParams,
+                // onSubmitted: (val) => controller.searchController.text,
+                decoration: const InputDecoration(
+                    border: InputBorder.none, hintText: ""),
+              ),
         ),
       ),
       body: SingleChildScrollView(
@@ -35,63 +47,17 @@ class SearchView extends GetView<SearchController> {
             Container(
               height: 30,
               margin: const EdgeInsets.only(top: 30.0),
-              child: const Center(
-                child: Text(
-                  "Found 6 Result",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold),
-                ),
+              child: Center(
+                child: Obx(() => Text(
+                      "Found ${controller.searchMealItem.length} Result",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold),
+                    )),
               ),
             ),
-            // Container(
-            //   margin: const EdgeInsets.only(
-            //     left: 45.0,
-            //     top: 120.0,
-            //   ),
-            //   child: GridView.count(
-            //     physics: const NeverScrollableScrollPhysics(),
-            //     shrinkWrap: true,
-            //       crossAxisCount: 2,
-            //       mainAxisSpacing: 50,
-            //     children: [
-            //       FoodCard(
-            //         title: "Veggoe\nTomatto Mix",
-            //         imageFood: 'assets/img/ic_food.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Egg and\nCucumber..",
-            //         imageFood: 'assets/img/ic_food3.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Fried\nChicken m.",
-            //         imageFood: 'assets/img/ic_food4.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Moi-moi\nand Ekpa",
-            //         imageFood: 'assets/img/ic_food5.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Bakpau",
-            //         imageFood: 'assets/img/ic_food5.png',
-            //       ),
-            //       FoodCard(
-            //         title: "chuankie",
-            //         imageFood: 'assets/img/ic_food5.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Veggoe\nTomatto Mix",
-            //         imageFood: 'assets/img/ic_food.png',
-            //       ),
-            //       FoodCard(
-            //         title: "Egg and\nCucumber..",
-            //         imageFood: 'assets/img/ic_food3.png',
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Obx(() => Container(
                   margin: EdgeInsets.only(left: 45, top: 120),
                   child: controller.isLoading.value == true
@@ -102,39 +68,16 @@ class SearchView extends GetView<SearchController> {
                           crossAxisCount: 2,
                           mainAxisSpacing: 50,
                           children: [
-                            // Padding(
-                            //   padding: EdgeInsets.only(
-                            //     right: 20,
-                            //   ),
-                            //   child: FoodCard(
-                            //     imageUrl: controller
-                            //                   .searchMealItem
-                            //                   .value
-                            //                   ?.strMealThumb ??
-                            //               '',
-                            //     title: controller
-                            //                   .detailMealSearch
-                            //                   .value
-                            //                   ?.strMeal ??
-                            //               '',
-                            //     idSearch: controller
-                            //                   .detailMealSearch
-                            //                   .value
-                            //                   ?.idMeal ??
-                            //               '',
-                            //   ),
-                            // ),
-                            ...controller.searchMealItem.map((item) => 
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                right: 20,
-                                              ),
-                                              child: FoodCard(
-                                                imageUrl: item.strMealThumb,
-                                                title: item.strMeal, idSearch: item.idMeal,
-                                              ),
-                                            )
-                                            )
+                            ...controller.searchMealItem.map((item) => Padding(
+                                  padding: EdgeInsets.only(
+                                    right: 20,
+                                  ),
+                                  child: FoodCard(
+                                    imageUrl: item.strMealThumb!,
+                                    title: item.strMeal!,
+                                    idSearch: item.idMeal!,
+                                  ),
+                                ))
                           ],
                         ),
                 )),
@@ -142,5 +85,9 @@ class SearchView extends GetView<SearchController> {
         ),
       ),
     );
+  }
+
+  _printLast() {
+    print("Last val : ${controller.searchParams.value}");
   }
 }
