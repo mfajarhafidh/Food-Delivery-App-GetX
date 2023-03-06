@@ -10,10 +10,10 @@ class SearchMealsModel {
         required this.meals,
     });
 
-    List<MealSearch> meals;
+    List<Meal> meals;
 
     factory SearchMealsModel.fromJson(Map<String, dynamic> json) => SearchMealsModel(
-        meals: List<MealSearch>.from(json["meals"].map((x) => MealSearch.fromJson(x))),
+        meals: List<Meal>.from(json["meals"].map((x) => Meal.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -21,26 +21,26 @@ class SearchMealsModel {
     };
 }
 
-class MealSearch {
-    MealSearch({
-        required this.idMeal,
+class Meal {
+    Meal({
         required this.strMeal,
         required this.strMealThumb,
+        required this.idMeal,
     });
 
-    String idMeal;
     String strMeal;
     String strMealThumb;
+    String idMeal;
 
-    factory MealSearch.fromJson(Map<String, dynamic> json) => MealSearch(
-        idMeal: json["idMeal"],
+    factory Meal.fromJson(Map<String, dynamic> json) => Meal(
         strMeal: json["strMeal"],
         strMealThumb: json["strMealThumb"],
+        idMeal: json["idMeal"],
     );
 
     Map<String, dynamic> toJson() => {
-        "idMeal": idMeal,
         "strMeal": strMeal,
         "strMealThumb": strMealThumb,
+        "idMeal": idMeal,
     };
 }
