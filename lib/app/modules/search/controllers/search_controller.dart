@@ -1,55 +1,58 @@
-import 'package:flutter/widgets.dart';
-import 'package:food_delivery/app/data/meal_detail_service.dart';
 import 'package:food_delivery/app/data/search_service.dart';
 import 'package:food_delivery/app/models/meal_search_model.dart';
 import 'package:get/get.dart';
 
 class SearchController extends GetxController {
+  // RxBool isLoading = false.obs;
+  // RxList<MealSearch> searchMealItem = <MealSearch>[].obs;
+  // final mealSearchService = SearchService();
+
   RxBool isLoading = false.obs;
-  RxList<MealSearch> searchMealItem = <MealSearch>[].obs;
+  RxList<MealSearch> listFood = <MealSearch>[].obs;
   final mealSearchService = SearchService();
-
-  final mealDetailService = MealDetailService();
-  String idSearch = '';
-  Rx<MealSearch?> detailMealSearch = MealSearch(strMeal: '').obs;
-
-  final searchController = TextEditingController();
-  RxString searchParams = ''.obs;
+  var searchList = <MealSearch>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     getSearchMeals();
-    searchController.addListener(() {
-      searchParams.value = searchController.text;
-    });
+    // searchController.addListener(() {
+    //   searchParams.value = searchController.text;
+    // });
 
-    debounce(searchParams, (_) {
-      print("debounce $_");
-    }, time: Duration(seconds: 1));
+    // debounce(searchParams, (_) {
+    //   print("debounce $_");
+    // }, time: Duration(seconds: 1));
   }
 
   getSearchMeals() async {
     isLoading(true);
     try {
-      SearchMealsModel responseSearch =
-          await mealSearchService.getSearchMeals(searchParams: searchParams.value);
-      // if(searchParams.value.){
-        searchMealItem.addAll(responseSearch.meals);
-        // searchMealItem.addAll(responseSearch.meals);
-      // } else{
-        // searchMealItem.addIf(responseSearch.meals.isNotEmpty, detailMealSearch)
-        // searchMealItem.addAllIf(detailMealSearch.value?.strMeal == searchParams.value, responseSearch.meals);
-        // searchMealItem.addAll(responseSearch.meals);
-      // }
-      // searchMealItem.addAll(responseSearch.meals);
-      // SearchMealsModel responseSearch = await mealSearchService.getSearchMeals(searchParams: searchController.text);
-      // var res = responseSearch.meals[1];
-      // detailMealSearch(res);
+      // SearchMealsModel responseSearch =
+      //     await mealSearchService.getSearchMeals(searchParams: searchParams.value);
+       SearchMealsModel responseSearch =
+          await mealSearchService.getSearchMeals();
+        listFood.addAll(responseSearch.meals);
       isLoading(false);
     } catch (e) {
       isLoading(false);
       Get.snackbar('Error', e.toString());
+    }
+  }
+
+  void onTextChanged(String text) {
+    searchList.clear();
+    if (text.isEmpty) {
+      for (var element in listFood) {
+        searchList.add(element);
+      }
+    } else {
+      for (var element in listFood) {
+        if (element.strMeal.toLowerCase().contains(text)) {
+          searchList.add(element);
+        }
+        searchList.refresh();
+      }
     }
   }
 

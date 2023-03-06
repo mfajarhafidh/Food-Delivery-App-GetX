@@ -49,7 +49,7 @@ class FoodCard extends StatelessWidget {
                             title,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
