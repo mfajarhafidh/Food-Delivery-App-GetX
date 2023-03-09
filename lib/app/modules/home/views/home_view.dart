@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../../shared/color_theme_widget/color_theme_widget.dart';
 import '../widgets/food_card_widget/food_card_widget.dart';
@@ -79,8 +80,7 @@ class HomeView extends GetView<HomeController> {
                   child: Row(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.only(
-                            left: 35, top: 21, bottom: 21),
+                        padding: EdgeInsets.only(left: 35, top: 21, bottom: 21),
                         child: SizedBox(
                           height: 18,
                           width: 18,
@@ -159,32 +159,28 @@ class HomeView extends GetView<HomeController> {
                       ),
                       Expanded(
                           child: TabBarView(clipBehavior: Clip.none, children: [
-                        ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: const [
-                            FoodCardWidget(
-                                image: "assets/img/food1.png",
-                                text: "Veggie\ntomato mix"),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            FoodCardWidget(
-                                image: "assets/img/food1.png",
-                                text: "Veggie\ntomato mix"),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            FoodCardWidget(
-                                image: "assets/img/food1.png",
-                                text: "Veggie\ntomato mix"),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            FoodCardWidget(
-                                image: "assets/img/food1.png",
-                                text: "Veggie\ntomato mix"),
-                          ],
-                        ),
+                        Obx(() => Container(
+                              child: controller.isLoading.value == true
+                                  ? SkeletonListView()
+                                  : controller.listMeal.isEmpty
+                                      ? SizedBox()
+                                      : ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children: [
+                                            ...controller.listMeal.map((item) => 
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                right: 20,
+                                              ),
+                                              child: FoodCardWidget(
+                                                imageUrl: item.strMealThumb,
+                                                text: item.strMeal, id: item.idMeal,
+                                              ),
+                                            )
+                                            )
+                                          ],
+                                        ),
+                            )),
                         ListView(
                           scrollDirection: Axis.horizontal,
                           children: const [
@@ -262,34 +258,34 @@ class HomeView extends GetView<HomeController> {
               BottomNavigationBarItem(
                 label: "Home",
                 icon: IconButton(
-                  onPressed: (){
-                    Get.toNamed(Routes.HOME);
-                    }, 
-                  icon: const Icon(Icons.home)),
+                    onPressed: () {
+                      Get.toNamed(Routes.HOME);
+                    },
+                    icon: const Icon(Icons.home)),
               ),
               BottomNavigationBarItem(
                 label: "Favorite",
                 icon: IconButton(
-                  onPressed: (){
-                    Get.to(Text("Favorite Page"));
-                  }, 
-                  icon: const Icon(Icons.favorite)),
+                    onPressed: () {
+                      Get.to(Text("Favorite Page"));
+                    },
+                    icon: const Icon(Icons.favorite)),
               ),
               BottomNavigationBarItem(
                 label: "Profile",
                 icon: IconButton(
-                  onPressed: (){
-                    Get.toNamed(Routes.PROFILE);
-                    }, 
-                  icon: const Icon(Icons.person)),
+                    onPressed: () {
+                      Get.toNamed(Routes.PROFILE);
+                    },
+                    icon: const Icon(Icons.person)),
               ),
               BottomNavigationBarItem(
                 label: "History",
                 icon: IconButton(
-                  onPressed: (){
-                    Get.toNamed(Routes.EMPTY_HISTORY);
-                  }, 
-                  icon: const Icon(Icons.history)),
+                    onPressed: () {
+                      Get.toNamed(Routes.EMPTY_HISTORY);
+                    },
+                    icon: const Icon(Icons.history)),
               ),
             ]),
       ),

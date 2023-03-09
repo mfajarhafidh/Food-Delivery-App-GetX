@@ -1,20 +1,33 @@
+import 'package:food_delivery/app/data/search_service.dart';
+import 'package:food_delivery/app/models/meal_search_model.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 class SearchController extends GetxController {
-  //TODO: Implement SearchController
+  RxBool isLoading = false.obs;
+  RxList<Meal> searchMealItem = <Meal>[].obs;
+  final mealSearchService = SearchService();
+  var searchText = <Meal>[].obs;
+  RxString searchParams = ''.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> getSearchMeals(String value) async {
+    isLoading(true);
+    searchMealItem.clear();
+    value.toLowerCase();
+    try {
+      SearchMealsModel responseSearch =
+          await mealSearchService.getSearchMeals(value);
+      searchMealItem.addAll(responseSearch.meals);
+      Logger().d(responseSearch.meals.first.idMeal);
+      isLoading(false);
+    } catch (e) {
+      isLoading(false);
+      // Get.snackbar('Error', e.toString());
+    }
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

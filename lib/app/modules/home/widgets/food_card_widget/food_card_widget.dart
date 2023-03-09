@@ -7,16 +7,19 @@ import '../../../../routes/app_pages.dart';
 class FoodCardWidget extends StatelessWidget {
   const FoodCardWidget({
     Key? key,
-    required this.image,
+    this.image = '',
     required this.text,
+    this.imageUrl = '', 
+    this.id = '',
   }) : super(key: key);
-  final String image, text;
+  final String image, text, imageUrl, id;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.DETAIL_FOOD);
+        Get.toNamed(Routes.DETAIL_FOOD, arguments: {'id' : id});
+        print(id);
       },
       child: SizedBox(
         height: 300,
@@ -33,19 +36,35 @@ class FoodCardWidget extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                        offset: const Offset(0, 4),
-                        color: const Color(0xFF393F3F).withOpacity(0.07),
+                        offset: Offset(0, 4),
+                        color: Color(0xFF393F3F).withOpacity(0.07),
                         blurRadius: 40)
                   ],
                 ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Text(
-                      text,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 10,),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          "N1,900",
+                          style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
@@ -61,14 +80,14 @@ class FoodCardWidget extends StatelessWidget {
                   color: Colors.grey[500]!.withOpacity(0.3),
                   boxShadow: [
                     BoxShadow(
-                        offset: const Offset(0, 4),
-                        color: const Color(0xFF393F3F).withOpacity(0.07),
+                        offset: Offset(0, 4),
+                        color: Color(0xFF393F3F).withOpacity(0.07),
                         blurRadius: 40)
                   ],
                 ),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(image),
-                ),
+                child: imageUrl == ''
+                    ? CircleAvatar(backgroundImage: AssetImage(image))
+                    : CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
               ),
             ),
           ],
