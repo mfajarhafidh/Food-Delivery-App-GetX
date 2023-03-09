@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/empty_pages/empty_order/views/empty_order_view.dart';
-import 'package:food_delivery/presentation/home/views/home_view.dart';
-import 'package:food_delivery/presentation/profiles/profile_change/views/profile_change_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../../shared/button_widget/button_widget.dart';

@@ -7,7 +7,6 @@ import '../controllers/payment_controller.dart';
 import '../widgets/button_confirm_widget.dart';
 
 class PaymentView extends GetView<PaymentController> {
-  PaymentController paymentController = Get.put(PaymentController());
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +103,10 @@ class PaymentView extends GetView<PaymentController> {
                           ),
                           leading: Radio<PaymentGroup>(
                               value: PaymentGroup.card,
-                              groupValue: paymentController.char.value,
+                              groupValue: controller.char.value,
                               activeColor: const Color(0xFFFA4A0C),
                               onChanged: (PaymentGroup? value) {
-                                paymentController
+                                controller
                                     .onClickPayment(PaymentGroup.card);
                               }),
                         )),
@@ -140,10 +139,10 @@ class PaymentView extends GetView<PaymentController> {
                           ),
                           leading: Radio<PaymentGroup>(
                               value: PaymentGroup.bankAccount,
-                              groupValue: paymentController.char.value,
+                              groupValue: controller.char.value,
                               activeColor: const Color(0xFFFA4A0C),
                               onChanged: (PaymentGroup? value) {
-                                paymentController
+                                controller
                                     .onClickPayment(PaymentGroup.bankAccount);
                               }),
                         )),
@@ -193,10 +192,10 @@ class PaymentView extends GetView<PaymentController> {
                           ),
                           leading: Radio<DeliveryGroup>(
                               value: DeliveryGroup.doorDelivery,
-                              groupValue: paymentController.group.value,
+                              groupValue: controller.group.value,
                               activeColor: const Color(0xFFFA4A0C),
                               onChanged: (DeliveryGroup? value) {
-                                paymentController.onClickDelivery(
+                                controller.onClickDelivery(
                                     DeliveryGroup.doorDelivery);
                               }),
                         )),
@@ -223,10 +222,10 @@ class PaymentView extends GetView<PaymentController> {
                           ),
                           leading: Radio<DeliveryGroup>(
                               value: DeliveryGroup.pickUp,
-                              groupValue: paymentController.group.value,
+                              groupValue: controller.group.value,
                               activeColor: const Color(0xFFFA4A0C),
                               onChanged: (DeliveryGroup? value) {
-                                paymentController
+                                controller
                                     .onClickDelivery(DeliveryGroup.pickUp);
                               }),
                         )),

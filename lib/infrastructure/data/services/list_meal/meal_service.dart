@@ -6,7 +6,7 @@ class MealService {
 
   Future<Meals> getMeals() async {
     final response = await _connect.get('1/filter.php?c=Seafood',
-        decoder: (data) => Meals.fromJson(data as Map<String, dynamic>));
+        decoder: (data) => Meals.fromJson(data));
     if (!response.hasError) {
       return response.body!;
     } else {

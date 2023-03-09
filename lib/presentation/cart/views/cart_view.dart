@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:food_delivery/presentation/checkout/views/checkout_view.dart';
-import 'package:food_delivery/presentation/home/views/home_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../shared/button_widget/button_widget.dart';

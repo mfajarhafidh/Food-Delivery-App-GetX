@@ -6,7 +6,7 @@ class MealDetailService {
 
   Future<DetailMealsModel> getDetailMeals({required String id}) async {
     final response = await _connect.get('1/lookup.php?i=$id',
-        decoder: (data) => DetailMealsModel.fromJson(data as Map<String, dynamic>));
+        decoder: (data) => DetailMealsModel.fromJson(data));
     if (!response.hasError) {
       return response.body!;
     } else {

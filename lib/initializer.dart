@@ -8,9 +8,9 @@ class Initializer {
     try {
       WidgetsFlutterBinding.ensureInitialized();
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+          overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
       _initGetConnect();
-    } catch (err) {
+    } catch (e) {
       rethrow;
     }
   }

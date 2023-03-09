@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_delivery/presentation/profiles/profile/views/profile_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../../shared/button_widget/button_widget.dart';
@@ -10,9 +8,6 @@ import '../../../../infrastructure/navigation/app_pages.dart';
 import '../controllers/profile_change_controller.dart';
 
 class ProfileChangeView extends GetView<ProfileChangeController> {
-  ProfileChangeController profileChangeController =
-      Get.put(ProfileChangeController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -174,15 +169,15 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                                   leading: Radio<RadioButtonProfile>(
                                     value: RadioButtonProfile.cardProfile,
                                     groupValue:
-                                        profileChangeController.character.value,
+                                        controller.character.value,
                                     activeColor: const Color(0xFFFA4A0C),
                                     onChanged: (RadioButtonProfile? value) {
-                                      profileChangeController.onClickProfile(
+                                      controller.onClickProfile(
                                           RadioButtonProfile.cardProfile);
                                     },
                                   ),
                                   onTap: () {
-                                    profileChangeController.onClickProfile(
+                                    controller.onClickProfile(
                                         RadioButtonProfile.cardProfile);
                                   },
                                 )),
@@ -192,7 +187,7 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                                 endIndent: 30),
                             Obx(() => ListTile(
                                   onTap: () {
-                                    profileChangeController.onClickProfile(RadioButtonProfile.bankAccountProfile);
+                                    controller.onClickProfile(RadioButtonProfile.bankAccountProfile);
                                   },
                                   title: Row(
                                     children: [
@@ -224,10 +219,10 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                                     value:
                                         RadioButtonProfile.bankAccountProfile,
                                     groupValue:
-                                        profileChangeController.character.value,
+                                        controller.character.value,
                                     activeColor: const Color(0xFFFA4A0C),
                                     onChanged: (RadioButtonProfile? value) {
-                                      profileChangeController.onClickProfile(
+                                      controller.onClickProfile(
                                           RadioButtonProfile
                                               .bankAccountProfile);
                                     },
@@ -239,7 +234,7 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                                 endIndent: 30),
                             Obx(() => ListTile(
                                   onTap: () {
-                                    profileChangeController.onClickProfile(RadioButtonProfile.paypalProfile);
+                                    controller.onClickProfile(RadioButtonProfile.paypalProfile);
                                   },
                                   title: Row(
                                     children: [
@@ -269,10 +264,10 @@ class ProfileChangeView extends GetView<ProfileChangeController> {
                                   ),
                                   leading: Radio<RadioButtonProfile>(
                                     value: RadioButtonProfile.paypalProfile,
-                                    groupValue: profileChangeController.character.value,
+                                    groupValue: controller.character.value,
                                     activeColor: const Color(0xFFFA4A0C),
                                     onChanged: (RadioButtonProfile? value) {
-                                      profileChangeController.onClickProfile(RadioButtonProfile.paypalProfile);
+                                      controller.onClickProfile(RadioButtonProfile.paypalProfile);
                                     },
                                   ),
                                 )),

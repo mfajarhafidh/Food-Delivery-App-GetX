@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/home/views/home_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../../shared/button_widget/button_widget.dart';

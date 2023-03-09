@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/payment/views/payment_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../shared/color_theme_widget/color_theme_widget.dart';
@@ -8,7 +6,6 @@ import '../../../infrastructure/navigation/app_pages.dart';
 import '../controllers/checkout_controller.dart';
 
 class CheckoutView extends GetView<CheckoutController> {
-  CheckoutController checkoutController = Get.put(CheckoutController());
 
   @override
   Widget build(BuildContext context) {
@@ -194,11 +191,11 @@ class CheckoutView extends GetView<CheckoutController> {
                               ),
                               leading: Radio<RadioButtonProfile>(
                                 value: RadioButtonProfile.doorDelivery,
-                                groupValue: checkoutController.character.value,
+                                groupValue: controller.character.value,
                                 activeColor: MaterialStateColor.resolveWith(
                                     (states) => deepOrange800),
                                 onChanged: (val) {
-                                  checkoutController.onClickRadio(RadioButtonProfile.doorDelivery);
+                                  controller.onClickRadio(RadioButtonProfile.doorDelivery);
                                 },
                               ),
                             ),),
@@ -220,11 +217,11 @@ class CheckoutView extends GetView<CheckoutController> {
                               ),
                               leading: Radio<RadioButtonProfile>(
                                 value: RadioButtonProfile.pickUp,
-                                groupValue: checkoutController.character.value,
+                                groupValue: controller.character.value,
                                 activeColor: MaterialStateColor.resolveWith(
                                     (states) => deepOrange800),
                                 onChanged: (val) {
-                                  checkoutController.onClickRadio(RadioButtonProfile.pickUp);
+                                  controller.onClickRadio(RadioButtonProfile.pickUp);
                                 },
                               ),
                             ),)

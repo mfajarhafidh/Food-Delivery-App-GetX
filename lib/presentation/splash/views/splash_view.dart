@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/home/views/home_view.dart';
-import 'package:food_delivery/presentation/auth/tab_bar_login_signup/views/tab_bar_login_signup_view.dart';
-
 import 'package:get/get.dart';
 
 import '../../shared/color_theme_widget/color_theme_widget.dart';
