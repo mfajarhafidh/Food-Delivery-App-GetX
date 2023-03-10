@@ -31,13 +31,13 @@ class HomeController extends GetxController {
   Future<void> onInit() async{
     super.onInit();
     try{
-      isLoading(true);
+      isLoading.toggle();
       final response = await _mealRepository.getMeals();
       listMeal.addAll(response.meals);
     } catch(e){
       Get.snackbar("Error", e.toString());
     } finally{
-      isLoading(false);
+      isLoading.toggle();
     }
   }
 
