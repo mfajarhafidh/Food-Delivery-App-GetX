@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:skeletons/skeletons.dart';
 
-import '../../shared/color_theme_widget/color_theme_widget.dart';
+import '../../shared/color_schemes/color_scheme.dart';
 import '../widgets/food_card_widget/food_card_widget.dart';
 import '../../../infrastructure/navigation/app_pages.dart';
 import '../controllers/home_controller.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
-import '../../shared/button_widget/button_widget.dart';
-import '../../shared/color_theme_widget/color_theme_widget.dart';
+import '../../shared/buttons/button_widget.dart';
+import '../../shared/color_schemes/color_scheme.dart';
 import '../../../infrastructure/navigation/app_pages.dart';
 import '../controllers/cart_controller.dart';
 

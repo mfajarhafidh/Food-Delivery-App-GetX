@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/shared/color_theme_widget/color_theme_widget.dart';
+import 'package:food_delivery/presentation/shared/color_schemes/color_scheme.dart';
 
 import 'package:get/get.dart';
 import 'package:skeletons/skeletons.dart';

@@ -4,7 +4,7 @@ import 'package:food_delivery/presentation/auth/sign_up/views/sign_up_view.dart'
 
 import 'package:get/get.dart';
 
-import '../../../shared/color_theme_widget/color_theme_widget.dart';
+import '../../../shared/color_schemes/color_scheme.dart';
 import '../controllers/tab_bar_login_signup_controller.dart';
 
 class TabBarLoginSignupView extends GetView<TabBarLoginSignupController> {

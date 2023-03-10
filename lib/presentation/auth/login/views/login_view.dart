@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../infrastructure/navigation/app_pages.dart';
-import '../../../shared/color_theme_widget/color_theme_widget.dart';
+import '../../../shared/color_schemes/color_scheme.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {

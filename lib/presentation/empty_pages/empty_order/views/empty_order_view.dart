@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/button_widget/button_widget.dart';
+import '../../../shared/buttons/button_widget.dart';
 import '../../../../infrastructure/navigation/app_pages.dart';
 import '../controllers/empty_order_controller.dart';
 
