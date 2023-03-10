@@ -26,8 +26,8 @@ class Meal {
   String idMeal;
 
   factory Meal.fromJson(Map<String, dynamic> json) => Meal(
-        strMeal: json["strMeal"],
-        strMealThumb: json["strMealThumb"],
-        idMeal: json["idMeal"],
+        strMeal: json["strMeal"] ?? '-',
+        strMealThumb: json["strMealThumb"] ?? '-',
+        idMeal: json["idMeal"] ?? '-',
       );
 }

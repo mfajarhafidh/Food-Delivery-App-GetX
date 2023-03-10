@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/domain/list_meal/meal_repository.dart';
 import 'package:food_delivery/infrastructure/data/services/list_meal/meal_service.dart';
 import 'package:food_delivery/domain/list_meal/meal_model.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,11 @@ class HomeController extends GetxController {
   RxBool isLoading = false.obs;
   RxList<Meal> listMeal = <Meal>[].obs;
   MealService mealService = MealService();
+
+  final MealRepository _mealRepository;
+
+  HomeController({required MealRepository mealRepository})
+    : _mealRepository = mealRepository;
   
   void toggleMenu() {
      if (sideMenuKey.currentState!.isOpened){
@@ -22,22 +28,36 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onInit() {
+  Future<void> onInit() async{
     super.onInit();
-    getListMeals();
-    Logger().d(getListMeals());
+    try{
+      isLoading(true);
+      final response = await _mealRepository.getMeals();
+      listMeal.addAll(response.meals);
+    } catch(e){
+      Get.snackbar("Error", e.toString());
+    } finally{
+      isLoading(false);
+    }
   }
 
-  Future<void> getListMeals() async{
-    isLoading(true);
-    try{
-      var response = await mealService.getMeals();
-      listMeal.addAll(response.meals);
-      isLoading(false);
-    }
-    catch(e){
-      isLoading(false);
-      Get.snackbar('Error', e.toString());
-    }
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   getListMeals();
+  //   Logger().d(getListMeals());
+  // }
+
+  // Future<void> getListMeals() async{
+  //   isLoading(true);
+  //   try{
+  //     var response = await mealService.getMeals();
+  //     listMeal.addAll(response.meals);
+  //     isLoading(false);
+  //   }
+  //   catch(e){
+  //     isLoading(false);
+  //     Get.snackbar('Error', e.toString());
+  //   }
+  // }
 }
